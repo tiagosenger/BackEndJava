@@ -1,0 +1,38 @@
+1. O que é uma classe em Java e qual é a diferença entre uma classe e um
+objeto? Dê 5 exemplos mostrando-os em C++ e em Java.
+
+R: Em Java, uma classe é uma estrutura que define o comportamento e as características de objetos, e serve como um modelo para criar objetos.
+Um objeto, por outro lado, é uma instância específica de uma classe, representando uma entidade real no programa.
+
+----------------------------------------------------------------------------------------
+
+2. Como você declara uma variável em Java e quais são os tipos de dados
+primitivos mais comuns? Faça um paralelo entre isso e a mesma coisa na
+linguagem C++.
+
+R: Em Java, é declarado uma variável indicando o tipo de dado seguido pelo nome da variável. Por exemplo: int idade;
+
+Tipos de Dados Primitivos em Java:
+int: Números inteiros.
+double: Números de ponto flutuante.
+char: Caracteres individuais.
+boolean: Valores booleanos (true/false).
+
+A diferença para C++ são os nomes dos tipos de dados primitivos.
+
+----------------------------------------------------------------------------------------
+
+3. Explique o conceito de herança em Java e como você pode criar uma
+subclasse a partir de uma classe existente. Faça um paralelo com C++,
+apresentando 5 exemplos.
+
+R: A herança em Java permite que uma classe (subclasse) herde características e comportamentos de outra classe (superclasse). A subclasse pode estender ou modificar o comportamento da superclasse.
+Em C++, a herança funciona com lógica semelhante, mudando um pouco a sintaxe da linguagem.
+
+----------------------------------------------------------------------------------------
+
+4. Quando declaramos uma variável em Java, temos, na verdade, um ponteiro.
+Em C++ é diferente. Discorra sobre esse aspecto.
+
+R: Em Java, quando declaramos uma variável de um tipo de objeto (não primitivo), na verdade, estamos criando uma referência para o objeto. O objeto é alocado dinamicamente no heap. Já em C++, quando declaramos um objeto, este é armazenado diretamente na memória. Não precisamos usar ponteiros explicitamente para trabalhar com objetos.
+Essa diferença entre Java e C++ reflete-se na forma como gerenciamos a memória e manipulamos objetos. Em Java, o garbage collector gerencia a liberação de memória, enquanto em C++ precisamos cuidar manualmente da alocação e desalocação de memória.
