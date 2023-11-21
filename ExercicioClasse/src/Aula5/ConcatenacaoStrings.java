@@ -18,11 +18,6 @@ public class ConcatenacaoStrings {
 		System.out.println(str);
 	}
 	
-	public static void fecharScanner() {
-	Scanner scanner = new Scanner(System.in);
-	scanner.close();
-	}
-	
 	public static void main(String[] args) {
 		String string1 = solicitarString("Digite a primeira string: ");
 		String string2 = solicitarString("Digite a segunda string: ");
@@ -30,7 +25,5 @@ public class ConcatenacaoStrings {
 		String resultado = concatenarStrings(string1, string2);
 			
 		exibirString("A terceira string é: " + resultado);
-		
-		fecharScanner();
 	}
 }
