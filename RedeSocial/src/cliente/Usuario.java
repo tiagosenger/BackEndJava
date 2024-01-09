@@ -1,102 +1,116 @@
 package cliente;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Usuario {
-	private String nome, email, nacionalidade;
-	private int qtdPostagens = 0;
-	
-	private ArrayList<String> postagens;
+    private String nome, email, senha;
+    private String nacionalidade;
+    private ArrayList<String> postagens;
+    
+    public Usuario(String nome, String email, String senha, String nacionalidade) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.nacionalidade = nacionalidade;
+        this.postagens = new ArrayList<String>();
+    }
 
-	public Usuario(String nome, String email, String nacionalidade) {
-		this.nome = nome;
-		this.email = email;
-		this.nacionalidade = nacionalidade;
-		this.postagens = new ArrayList<String>();
-		this.qtdPostagens = 0;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public static Usuario criarUsuario(Scanner scanner) {
+        System.out.print("Digite o seu nome: ");
+        String nome = scanner.nextLine();
 
-	public String getNacionalidade() {
-		return nacionalidade;
-	}
+        System.out.print("Digite o seu email: ");
+        String email = scanner.nextLine();
 
-	public void setNacionalidade(String nacionalidade) {
-		this.nacionalidade = nacionalidade;
-	}
-	
-	public void adicionaPostagem(String post) {
-		postagens.add(post);
-		qtdPostagens++;
-	}
-	
-	public int getQtdPostagens() {
-		return qtdPostagens;
-	}
+        System.out.print("Digite a sua nacionalidade: ");
+        String nacionalidade = scanner.nextLine();
 
-	public void setQtdPostagens(int qtdPostagens) {
-		this.qtdPostagens = qtdPostagens;
-	}
-	
+        System.out.print("Digite a sua senha: ");
+        String senha = scanner.nextLine();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("usuarios.csv", true))) {
+            writer.write(nome + ";" + email + ";" + nacionalidade + ";" + senha);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Erro ao gravar no arquivo CSV: " + e.getMessage());
+        }
+
+        return new Usuario(nome, email, senha, nacionalidade);
+    }
+
     public void realizarNovaPostagem(Scanner scanner) {
-        System.out.print("Deseja fazer uma nova postagem? (S/N): ");
-        String resposta = scanner.nextLine().toUpperCase();
+        System.out.print("Faça sua nova postagem: ");
+        String novaPostagem = scanner.nextLine();
+        System.out.println(nome + " disse:");
+        System.out.println(novaPostagem);
+        
+        postagens.add(novaPostagem);
+    }
 
-        if (resposta.equals("S")) {
-            System.out.print("Faça sua nova postagem: ");
-            String novaPostagem = scanner.nextLine();
-
-            System.out.println(nome + " disse:");
-            System.out.println(novaPostagem);
-
-            adicionaPostagem(novaPostagem);
-            realizarNovaPostagem(scanner);
+    public void exibirTodasPostagens() {
+        if (postagens.isEmpty()) {
+            System.out.println(nome + " não fez nenhuma postagem ainda.");
+        } else {
+            System.out.println(nome + " fez as seguintes postagens:");
+            for (String postagem : postagens) {
+                System.out.println(postagem);
+            }
         }
     }
 
-	public static void main(String [] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-						
-		System.out.print("Olá! Digite o seu nome: ");
-		String nome = scanner.nextLine();
-		
-		System.out.print("Digite agora o seu email: ");
-		String email = scanner.nextLine();
-		
-		System.out.print("E qual sua nacionalidade?: ");
-		String nacionalidade = scanner.nextLine();
-		
-		Usuario usuario1 = new Usuario (nome, email, nacionalidade);
-		
-		System.out.print("Faça sua primeira postagem abaixo!");
-		String postagem = scanner.nextLine();
-		
-		System.out.println(nome+" disse:");
-		System.out.println(postagem);
-		
-		usuario1.adicionaPostagem(postagem);
-		
-		usuario1.realizarNovaPostagem(scanner);
-		
-		System.out.println(nome + " já fez o total de " + usuario1.qtdPostagens + "postagens");
-		
-		scanner.close();	
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bem-vindo! Insira suas informações para entrar na rede social.");
+
+        Usuario usuario = criarUsuario(scanner);
+
+        int opcao;
+        do {
+            System.out.println("----- Menu -----");
+            System.out.println("1. Realizar nova postagem");
+            System.out.println("2. Listar todas as postagens");
+            System.out.println("3. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (opcao) {
+                case 1:
+                    usuario.realizarNovaPostagem(scanner);
+                    break;
+                case 2:
+                    usuario.exibirTodasPostagens();
+                    break;
+                case 3:
+                    System.out.println("Saindo do programa...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+
+        } while (opcao != 3);
+
+        scanner.close();
+    }
 }
