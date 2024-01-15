@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Cripto {
-
+	
     public static void main(String[] args) {
         if (args.length != 3) {
             System.out.println("Por favor, forneça dois nomes de arquivos e uma senha como argumentos.");
@@ -22,7 +22,7 @@ public class Cripto {
         } catch (IOException e) {
             System.err.println("Erro durante a cópia do arquivo: " + e.getMessage());
         } finally {
-            System.exit(0);
+            System.exit(0); 
         }
     }
 
