@@ -6,8 +6,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class CopiaArquivo {
-    public static void main(String[] args) {
+public class copiaArquivo {
+    public static void copiar(String string) {
         String arquivoOrigem = "origem.txt";
         String arquivoDestino = "destino.txt";
 

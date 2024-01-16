@@ -5,9 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class EscritaArquivo {
+public class escritaArquivo {
 	
-	public static void main(String[] args) {
+	public static void inserirLinhas(String string) {
         String nomeArquivo = "saida.txt";
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
