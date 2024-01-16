@@ -13,8 +13,14 @@ public class mainMenu {
             System.out.println("2. Ler Estudantes do Arquivo JSON");
             System.out.println("3. Sair");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+
+            String opcaoStr = scanner.next();
+
+            try {
+                opcao = Integer.parseInt(opcaoStr);
+            } catch (NumberFormatException e) {
+                opcao = 0;
+            }
 
             switch (opcao) {
                 case 1:
@@ -35,4 +41,7 @@ public class mainMenu {
         scanner.close();
     }
 }
+
+
+
 

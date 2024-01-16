@@ -6,6 +6,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/06000856512/Desktop/ModuloJava/gson-2.8.5-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
