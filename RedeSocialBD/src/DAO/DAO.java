@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class DAO {
 
-	private static final String URL = "jdbc:mysql";
+	private static final String URL = "jdbc:mysql://udhvi2kkhtuilms4:CF8vuL7CX5f4ujCyG4Yk@bopjqikaqoodpgfj6klm-mysql.services.clever-cloud.com:3306/bopjqikaqoodpgfj6klm";
 	
 	public static Connection criarConexao() {
 		Connection con = null;
@@ -19,4 +19,6 @@ public class DAO {
 		}
 		return con;
 	}
+	
+	
 }
